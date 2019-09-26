@@ -1,19 +1,15 @@
 <?php
-
 // src/Controller/SearchController.php
 namespace App\Controller;
 
-use App\Controller\UserController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class SearchController extends Controller
-{
-     
+{ 
     public function searchUserForm(Request $request)
     {
         $form = $this->createFormBuilder(null)
@@ -31,8 +27,7 @@ class SearchController extends Controller
     *@param Request $request
     */
     public function handleSearch(Request $request)
-    {
-        
+    {      
         $query = $request->request->get('form')['search'];
         
         return $this->redirect("search/query/{$query}/page/1");

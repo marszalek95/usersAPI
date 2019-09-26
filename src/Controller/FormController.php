@@ -51,7 +51,6 @@ class FormController extends AbstractController
             {
                 $message = ['alert' => true, 'message' => $meta['result'][0]['message']];
             }
-
         }
 
         return $this->render('adduser.html.twig', [
@@ -99,7 +98,6 @@ class FormController extends AbstractController
                 
             ];
            
-
             $usercontroller = new UserController();
             $meta = $usercontroller->editUser($result_arr, $id);
             if($meta['_meta']['success'] == 1)

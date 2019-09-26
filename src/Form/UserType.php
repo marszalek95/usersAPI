@@ -37,8 +37,7 @@ class UserType extends AbstractType
                     'unactive' => 'unactive',
                 ]
             ])
-            ->add('avatarUrl', UrlType::class)
-            
+            ->add('avatarUrl', UrlType::class)       
         ;
     }
 

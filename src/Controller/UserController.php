@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-// use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
 use App\Controller\FormController;
@@ -14,7 +13,6 @@ class UserController extends AbstractController
      * @Route("/users/page/{page<[1-9]\d*>}", defaults={"_format"="html"}, methods={"GET"}, name="users_paginated")
      * @Route("/users", defaults={"page": "1", "_format"="html"}, methods={"GET"}, name="users")
      */
-
         public function getUsers($page)
         {
             $url = "https://gorest.co.in/public-api/users?_format=json&access-token=PlWJ9sxUSB5XiFj--yGSNYJi1r46ZUefNUfW&page={$page}";
@@ -44,15 +42,12 @@ class UserController extends AbstractController
             $response = $client->request('GET', $url);
             $response_arr = $response->toArray();
 
-            
-
             return $this->render('search.html.twig', 
             [
                 'users' => $response_arr['result'],
                 'meta' => $response_arr['_meta'],
                 'query' => $query
-            ]);
-          
+            ]);         
         }
 
         /**
@@ -64,14 +59,11 @@ class UserController extends AbstractController
         
             $response_arr = $this->idUser($id);
 
-            
-
             return $this->render('userinfo.html.twig', 
             [
                 'user' => $response_arr['result'],
                 'meta' => $response_arr['_meta'],
-            ]);
-          
+            ]);         
         }
 
         public function idUser($id)
@@ -101,7 +93,6 @@ class UserController extends AbstractController
             $response_arr = $response->toArray();
 
             return $response_arr;
-
         }
 
         public function editUser($body, $id)
@@ -119,7 +110,6 @@ class UserController extends AbstractController
             $response_arr = $response->toArray();
 
             return $response_arr;
-
         }
 
         /**
@@ -148,7 +138,5 @@ class UserController extends AbstractController
             }
 
             return $this->redirectToRoute('users');
-        }
-
-        
+        }       
 }
